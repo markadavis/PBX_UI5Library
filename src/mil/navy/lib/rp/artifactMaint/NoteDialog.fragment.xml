@@ -1,0 +1,145 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" >
+	<Dialog
+		type="Standard"
+		stretch="false"
+		showHeader="true"
+		horizontalScrolling="true"
+		verticalScrolling="true"
+		title="{/Settings/dialogTitle}" >
+		<content>
+
+			<Table
+				inset="true"
+				sticky="ColumnHeaders"
+				growing="true"
+				growingThreshold="50"
+				growingScrollToLoad="true"
+				mode="SingleSelectMaster"
+				selectionChange="onSelectionChange"
+				items="{/NoteItems}" >
+
+				<columns>
+					<Column >
+						<Label labelFor="idSubjectCell"
+							text="{i18n>NotesMaint_HeadingSubject}" />
+					</Column>
+					<Column width="10rem" >
+						<Label labelFor="idChangedByCell"
+							text="{i18n>NotesMaint_HeadingChangedBy}" />
+					</Column>
+					<Column width="8rem" >
+						<Label labelFor="idChangeddOnCell"
+							text="{i18n>NotesMaint_HeadingChangedOn}" />
+					</Column>
+				</columns>
+
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text id="idSubjectCell"
+								maxLines="1"
+								text="{Title}" />
+							<Text id="idChangedByCell"
+								maxLines="1"
+								text="{Choadr}" />
+							<Text id="idChangeddOnCell"
+								maxLines="1"
+								text="{
+									path: 'Chdat',
+									type: 'sap.ui.model.type.Date',
+									formatOptions: {
+										pattern: 'MM/dd/yyyy',
+										strictParsing: true,
+										UTC: true
+									}
+								}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+
+			</Table>
+
+			<Panel>
+				<content>
+
+					<!-- Note Subject Line -->
+					<VBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd">
+						<items>
+							<Label labelFor="idNoteSubject"
+								design="Bold"
+								textAlign="Begin"
+								required="{/Setttings/TitleEditable}"
+								text="{i18n>NotesMaint_LabelSubject}" />
+							<Input id="idNoteSubject"
+								width="25rem"
+								maxLength="50"
+								required="{/Setttings/TitleEditable}"
+								editable="{/Settings/TitleEditable}"
+								value="{/Note/Title}" />
+						</items>
+					</VBox>
+
+					<!-- Notes Text Area -->
+					<VBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd">
+						<items>
+							<Label labelFor="idNoteTextArea"
+								design="Bold"
+								textAlign="Begin"
+								required="{/Setttings/TextEditable}"
+								text="{i18n>NotesMaint_LabelNotes}"  />
+							<TextArea id="idNoteTextArea"
+								width="100%"
+								rows="10"
+								required="{/Setttings/TextEditable}"
+								editable="{/Settings/TextEditable}"
+								value="{/Note/Text}" />
+						</items>
+					</VBox>
+
+					<!-- Message Line(s) -->
+					<VBox visible="{/Settings/DialogMessageVisible}"
+						class="sapUiSmallMarginTop" >
+						<items>
+							<ObjectStatus state="Success"
+								class="sapUiLargeMarginBegin"
+								icon="sap-icon://status-positive"
+								visible="{/Settings/DialogMessageSuccess}"
+								text="{/Settings/dialogMessage}" />
+							<ObjectStatus state="Error"
+								class="sapUiLargeMarginBegin"
+								icon="sap-icon://alert"
+								visible="{/Settings/DialogMessageError}"
+								text="{/Settings/dialogMessage}" />
+							<ObjectStatus state="Warning"
+								class="sapUiLargeMarginBegin"
+								icon="sap-icon://status-critical"
+								visible="{/Settings/DialogMessageWarn}"
+								text="{/Settings/dialogMessage}" />
+							<ObjectStatus state="Information"
+								class="sapUiLargeMarginBegin"
+								icon="sap-icon://hint"
+								visible="{/Settings/DialogMessageInform}"
+								text="{/Settings/dialogMessage}" />
+						</items>
+					</VBox>
+
+				</content>
+			</Panel>
+
+		</content>
+
+		<buttons>
+			<Button text="{i18n>Notesmaint_BtnDelete}" tooltip="{i18n>Notesmaint_BtnDeleteTip}" type="Reject" visible="{/Settings/DeleteVisible}" press="onDeletePress" />
+			<Button text="{i18n>Notesmaint_BtnAdd}" tooltip="{i18n>Notesmaint_BtnAddTip}" visible="{/Settings/CreateVisible}" press="onCreatePress" />
+			<Button text="{i18n>Notesmaint_BtnChange}" tooltip="{i18n>Notesmaint_BtnChangeTip}" visible="{/Settings/ChangeVisible}" press="onChangePress" />
+			<Button text="{i18n>Notesmaint_BtnSave}" tooltip="{i18n>Notesmaint_BtnSaveTip}" type="Accept" visible="{/Settings/SaveVisible}" press="onSavePress" />
+			<Button text="{i18n>Notesmaint_BtnCancel}" tooltip="{i18n>Notesmaint_BtnCancelTip}" visible="{/Settings/CancelVisible}" press="onCancelPress" />
+			<Button text="{i18n>Notesmaint_BtnClose}" tooltip="{i18n>Notesmaint_BtnCloseTip}" visible="{/Settings/CloseVisible}" press="onExitNoteButton" />
+		</buttons>
+
+	</Dialog>
+</core:FragmentDefinition>

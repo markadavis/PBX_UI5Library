@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+   <edmx:DataServices m:DataServiceVersion="2.0">
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZM_RP_UPLDDOC_SRV" xml:lang="en" sap:schema-version="1">
+         <Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Core.SchemaVersion" String="1.0.0" />
+         <EntityType Name="uploadDoc" m:HasStream="true" sap:content-version="1">
+            <Key>
+               <PropertyRef Name="param1" />
+               <PropertyRef Name="param2" />
+               <PropertyRef Name="param3" />
+               <PropertyRef Name="param4" />
+               <PropertyRef Name="docCategory" />
+               <PropertyRef Name="docType" />
+               <PropertyRef Name="docVersion" />
+            </Key>
+            <Property Name="param1" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Param1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="param2" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Param2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="param3" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Param3" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="param4" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Param4" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="docCategory" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Document Category" sap:creatable="false" sap:updatable="false" />
+            <Property Name="docType" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Document Type" sap:creatable="false" sap:updatable="false" />
+            <Property Name="docVersion" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Document Version" sap:creatable="false" sap:updatable="false" />
+            <Property Name="docNumber" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Document Number" sap:creatable="false" sap:updatable="false" sap:filterable="false" />
+            <Property Name="docName" Type="Edm.String" MaxLength="200" sap:unicode="false" sap:label="Document Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="docFileType" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Document File Type (extension)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="docDesc" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Document Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="createdBy" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Created By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="createdOn" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="changedBy" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Changed By" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="changedOn" Type="Edm.DateTime" Precision="0" sap:unicode="false" sap:label="Changed On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+         </EntityType>
+         <EntityType Name="paramMetadata" sap:content-version="1">
+            <Key>
+               <PropertyRef Name="docCategory" />
+               <PropertyRef Name="docType" />
+               <PropertyRef Name="id" />
+            </Key>
+            <Property Name="docCategory" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Document Category" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="docType" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Document Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="id" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Parameter ID (1/2/3/4)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="label" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Parameter Label" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="length" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Parameter Value Length" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+            <Property Name="type" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Parameter Element Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+         </EntityType>
+         <EntityContainer Name="ZM_RP_UPLDDOC_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+            <EntitySet Name="uploadDocSet" EntityType="ZM_RP_UPLDDOC_SRV.uploadDoc" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+            <EntitySet Name="paramMetadataSet" EntityType="ZM_RP_UPLDDOC_SRV.paramMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+         </EntityContainer>
+         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="https://FD4X.ERP.NAVY.MIL:443/sap/opu/odata/sap/ZM_RP_UPLDDOC_SRV/$metadata" />
+         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="https://FD4X.ERP.NAVY.MIL:443/sap/opu/odata/sap/ZM_RP_UPLDDOC_SRV/$metadata" />
+      </Schema>
+   </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,62 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "mil.navy.lib",
+		"type": "library",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "Navy ERP UI5 Library",
+		"description": "Custom UI5 library for Navy ERP implementations",
+		"ach": "",
+		"offline": true
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"supportedThemes": []
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"minUI5Version": "1.71.40",
+			"libs": {
+				"sap.ui.core": {
+					"minUI5Version": "1.71.40"
+				}
+			}
+		},
+		"library": {
+			"i18n": "i18n.properties",
+			"css": true,
+			"content": {
+				"controls": [
+					"mil.navy.lib.ca.appUtils.HashChangeListener",
+					"mil.navy.lib.ca.appUtils.MobileKeyboardEvents",
+					"mil.navy.lib.ca.barcodeScanner.BarcodeScanHandler",
+					"mil.navy.lib.ca.controls.FilteredInput",
+					"mil.navy.lib.ca.controls.VariantFilterBar",
+					"mil.navy.lib.ca.odataUtils.ModelUtil",
+					"mil.navy.lib.ca.odataUtils.Sorter",
+					"mil.navy.lib.ca.odataUtils.ErrorHandler",
+					"mil.navy.lib.ca.barcodeScanner.BarcodeScanHandler",
+					"mil.navy.lib.ca.personalization.VariantManager",
+					"mil.navy.lib.rp.artifactMaint.ArtifactMaint",
+					"mil.navy.lib.rp.artifactMaint.NotesMaint",
+					"mil.navy.lib.rp.controls.vendorRic.MultiVendorRIC",
+					"mil.navy.lib.rp.controls.vendorRic.VendorRIC"
+					],
+				"types": [
+					"mil.navy.lib.ca.type.HelpValueType"
+				],
+				"elements": [],
+				"interfaces": []
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/Zui5_library"
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "reusecomponent"
+	}
+}

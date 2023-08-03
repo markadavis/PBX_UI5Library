@@ -1,0 +1,88 @@
+<core:FragmentDefinition xmlns:control="sap.gantt.control"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc" >
+
+	<Dialog
+		contentWidth="auto"
+		horizontalScrolling="true"
+		showHeader="true"
+		state="None"
+		stretch="false"
+		title="{metadata>/Settings/dialogTitle}"
+		type="Standard"
+		verticalScrolling="true" >
+		<content>
+
+			<!-- backgroundDesign="Solid"  -->
+			<Panel>
+				<content>
+
+					<UploadCollection
+						maximumFilenameLength="75"
+						multiple="true"
+						change="onChangeAttachUpload"
+						fileDeleted="onFileDeleted"
+						beforeUploadStarts="onBeforeUploadStarts"
+						uploadComplete="onUploadComplete"
+						items="{path: '/results'}"
+						noDataText="{i18n>ArtifactMaint_NoAttachments}"
+						uploadEnabled="true" >
+						<items>
+
+							<!-- mimeType="{docFileType}" -->
+							<UploadCollectionItem
+								enableDelete="true"
+								enableEdit="false"
+								visibleEdit="false"
+								documentId="{docNumber}"
+								fileName="{docName}"
+								url="{
+									parts: [
+										'param1',
+										'param2',
+										'param3',
+										'param4',
+										'docCategory',
+										'docType',
+										'docVersion'
+									],
+									formatter: '.getImageUrl'
+								}" >
+
+								<ObjectAttribute
+									title="{i18n>ArtifactMaint_CreatedBy}"
+									text="{createdBy}"/>
+								<ObjectAttribute
+									title="{i18n>ArtifactMaint_CreatedOn}"
+									text="{
+										path: 'createdOn',
+										type: 'sap.ui.model.type.Date',
+										formatOptions: {
+											pattern: 'MM/dd/yyyy'
+										}
+									}" />
+
+							</UploadCollectionItem>
+
+						</items>
+					</UploadCollection>
+
+				</content>
+			</Panel>
+
+		</content>
+
+		<buttons>
+			<Button
+				type="Default"
+				text="{i18n>ArtifactMaint_BtnClose}"
+				tooltip="{i18n>ArtifactMaint_BtnCloseTip}"
+				press="onCloseAttachButton" />
+		</buttons>
+
+	</Dialog>
+
+</core:FragmentDefinition>

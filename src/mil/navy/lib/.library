@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>mil.navy.lib</name>
+    <vendor>US Navy ERP</vendor>
+    <version>1.0.0</version>
+    <copyright>${copyright}US Navy ERP</copyright>
+    <title>>Navy ERP UI5 Library</title>
+    <documentation>Custom UI5 library for Navy ERP implementations</documentation>
+	<dependencies>
+		<dependency>
+			<libraryName>sap.ui.core</libraryName>
+		</dependency>
+	</dependencies>
+</library>

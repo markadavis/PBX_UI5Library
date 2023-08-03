@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.4"
+metadata:
+  name: mil.navy.lib
+type: library
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        ignoreCertError: true
+        target:
+          destination: FD4
+          url: https://ndc2-313.erp.navy.mil:40401
+          client: "100"
+        app:
+          name: ZUI5_LIBRARY
+          description: US Navy ERP Custom UI5 Library
+          package: ZUI5
+          transport: FD4K900680
