@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (CompositeType) {
 	"use strict";
 
-	return CompositeType.extend("mil.navy.lib.ca.type.HelpValueType", {
+	return CompositeType.extend("com.publix.ui5lib.ca.type.HelpValueType", {
 		CAMEL_CASE: "CamelCase",
 		VALUE_WITH_TEXT: "ValueWithText",
 

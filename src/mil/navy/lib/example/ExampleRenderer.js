@@ -30,7 +30,7 @@ sap.ui.define([],
 			oRm.addClass("sapRULTExample");
 			oRm.writeClasses();
 			oRm.write(">");
-			oRm.write(sap.ui.getCore().getLibraryResourceBundle("mil.navy.lib").getText("ANY_TEXT"));
+			oRm.write(sap.ui.getCore().getLibraryResourceBundle("com.publix.ui5lib").getText("ANY_TEXT"));
 
 			oRm.writeEscaped(oControl.getText());
 			oRm.write("</div>");

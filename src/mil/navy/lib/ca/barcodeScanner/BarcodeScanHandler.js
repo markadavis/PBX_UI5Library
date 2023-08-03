@@ -4,12 +4,12 @@ sap.ui.define([
 ], function(UI5Object, ResourceModel) {
 	"use strict";
 
-	return UI5Object.extend("mil.navy.lib.ca.barcodeScanner.BarcodeScanHandler", {
+	return UI5Object.extend("com.publix.ui5lib.ca.barcodeScanner.BarcodeScanHandler", {
 
 		/**
 		 * Handles application scanning by automatically attaching the appropriate API.
 		 * @class
-		 * @alias mil.navy.lib.ca.barcodeScanner.BarcodeScanHandler
+		 * @alias com.publix.ui5lib.ca.barcodeScanner.BarcodeScanHandler
 		 * 
 		 * @public
 		 * @param {sap.ui.core.UIComponent} oComponent reference to the app's component
@@ -19,7 +19,7 @@ sap.ui.define([
 			this._oComponent = oComponent;
 			this._sAppID = this._oComponent.getManifestEntry ? this._oComponent.getManifestEntry("sap.app").id : this._oComponent.getMetadata().getName();
 			this._oResourceModel = new ResourceModel({
-				bundleName: "mil.navy.lib.ca.barcodeScanner.i18n"
+				bundleName: "com.publix.ui5lib.ca.barcodeScanner.i18n"
 			});
 			this._oResourceBundle = this._oResourceModel.getResourceBundle();
 			this._bHasHardwareScanner = this._registerBarcodeHardware(sProfile);

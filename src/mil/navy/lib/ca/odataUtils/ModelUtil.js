@@ -6,7 +6,7 @@ sap.ui.define([
 ], function(UI5Object, AppLog, JSONModel, ObjectPath) {
 	"use strict";
 
-	return UI5Object.extend("mil.navy.lib.ca.odataUtils.ModelUtil", {
+	return UI5Object.extend("com.publix.ui5lib.ca.odataUtils.ModelUtil", {
 
 
 		/* =========================================================== */
@@ -19,7 +19,7 @@ sap.ui.define([
 		 * @param {sap.ui.core.UIComponent} oComponent reference to the app's component
 		 * @Param {string} sModelId The ID of the model to be operated on.
 		 * @public
-		 * @alias mil.navy.lib.ca.odataUtils.ModelUitl
+		 * @alias com.publix.ui5lib.ca.odataUtils.ModelUitl
 		 */
 		constructor: function(oComponent, sModelId) {
 			if (oComponent) {

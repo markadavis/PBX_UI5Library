@@ -8,7 +8,7 @@ sap.ui.define([
 ], function(UI5Object, AppLog, Device, History, ResourceModel, MessageBox) {
 	"use strict";
 
-	return UI5Object.extend("mil.navy.lib.ca.appUtils.HashChangeListener", {
+	return UI5Object.extend("com.publix.ui5lib.ca.appUtils.HashChangeListener", {
 
 
 		/* =========================================================== */
@@ -19,7 +19,7 @@ sap.ui.define([
 		 * Listens for application hash changes and report back when there are changes.
 		 * @class
 		 * @public
-		 * @alias mil.navy.lib.ca.appUtils.HashChangeListener
+		 * @alias com.publix.ui5lib.ca.appUtils.HashChangeListener
 		 */
 		constructor: function() {
 			var sCurrentHash,
@@ -27,7 +27,7 @@ sap.ui.define([
 
 			// Create and Set the 'i18n' resource model.
 			this._oResourceModel =new ResourceModel({
-				bundleName: "mil.navy.lib.ca.appUtils.i18n.i18n"
+				bundleName: "com.publix.ui5lib.ca.appUtils.i18n.i18n"
 			});
 			this._oResourceBundle = this._oResourceModel.getResourceBundle();
 

@@ -9,7 +9,7 @@ sap.ui.define([
 ], function(UI5Object, AppLog, ResourceModel, JSONModel, Sorter, MessageToast, Device) {
 	"use strict";
 
-	return UI5Object.extend("mil.navy.lib.ca.odataUtils.Sorter", {
+	return UI5Object.extend("com.publix.ui5lib.ca.odataUtils.Sorter", {
 
 
 		/* =========================================================== */
@@ -22,18 +22,18 @@ sap.ui.define([
 		 * @param {sap.m.ListBase} oList A reference to the list to be sorted.
 		 * @param {Array} aSortFields An arrah of maps with sort field 'Name' & 'Value' pairs.
 		 * @public
-		 * @alias mil.navy.lib.ca.odataUtils.Sorter
+		 * @alias com.publix.ui5lib.ca.odataUtils.Sorter
 		 */
 		constructor: function(oList, aSortFields) {
 			// Bind the caller's components.
 			this._oAttachedList = oList;
 
 			// Construct the Sort Dialog.
-			this._oSortDialog = sap.ui.xmlfragment(oList.getId() + "__sorter", "mil.navy.lib.ca.odataUtils.fragment.SortDialog", this);
+			this._oSortDialog = sap.ui.xmlfragment(oList.getId() + "__sorter", "com.publix.ui5lib.ca.odataUtils.fragment.SortDialog", this);
 
 			// Create and Set the 'i18n', 'device' & resource models.
 			var oResource = new ResourceModel({
-				bundleName: "mil.navy.lib.ca.odataUtils.i18n.i18n"
+				bundleName: "com.publix.ui5lib.ca.odataUtils.i18n.i18n"
 			});
 			this._oSortDialog.setModel(oResource, "i18n");
 			var oDeviceModel = new JSONModel(Device);

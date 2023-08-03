@@ -1,7 +1,7 @@
 /*!
  * ${copyright}
  */
-// Provides control mil.navy.lib.Example.
+// Provides control com.publix.ui5lib.Example.
 sap.ui.define([
 	"./../lib", "sap/ui/core/Control", "./ExampleRenderer"
 ], function (library, Control, ExampleRenderer) {
@@ -17,17 +17,17 @@ sap.ui.define([
 	 * Some class description goes here.
 	 * @extends sap.ui.core.Control
 	 *
-	 * @author US Navy ERP
+	 * @author Publix ERP ERP
 	 * @version 0.1.0
 	 *
 	 * @constructor
 	 * @public
-	 * @alias mil.navy.lib.controls.Example
+	 * @alias com.publix.ui5lib.controls.Example
 	 * @ui5-metamodel This control/element also will be described in the UI5 (legacy) designtime metamodel
 	 */
-	var Example = Control.extend("mil.navy.lib.controls.Example", {
+	var Example = Control.extend("com.publix.ui5lib.controls.Example", {
 		metadata: {
-			library: "mil.navy.lib",
+			library: "com.publix.ui5lib",
 			properties: {
 				/**
 				 * text

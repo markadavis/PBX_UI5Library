@@ -40,5 +40,5 @@ server:
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:
-        component: com.company.ca.ui5lib
+        component: com.publix.ui5lib
         ui5Theme: sap_fiori_3

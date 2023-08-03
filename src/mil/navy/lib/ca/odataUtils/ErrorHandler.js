@@ -7,7 +7,7 @@ sap.ui.define([
 ], function(UI5Object, AppLog, Device, ResourceModel, MessageBox) {
 	"use strict";
 
-	return UI5Object.extend("mil.navy.lib.ca.odataUtils.ErrorHandler", {
+	return UI5Object.extend("com.publix.ui5lib.ca.odataUtils.ErrorHandler", {
 
 		/* =========================================================== */
 		/*  Lifecycle methods                                          */
@@ -22,12 +22,12 @@ sap.ui.define([
 		 * @param {Boolean} bMetadataOnly If true, only react to metadata load failures.
 		 * @param {sap.ui.model.odata.V2.ODataModel} oModel Optional model instance (ignored if sModelId given. oComponet).
 		 * @public
-		 * @alias mil.navy.lib.ca.odataUtils.ODataErrorHandler
+		 * @alias com.publix.ui5lib.ca.odataUtils.ODataErrorHandler
 		 */
 		constructor: function(oComponent, sModelId, bMetadataOnly, oModel) {
 			// Create and Set the 'i18n' resource model.
 			this._oResources = new ResourceModel({
-				bundleName: "mil.navy.lib.ca.odataUtils.i18n.i18n"
+				bundleName: "com.publix.ui5lib.ca.odataUtils.i18n.i18n"
 			});
 			this._oResourceBundle = this._oResources.getResourceBundle();
 
@@ -41,7 +41,7 @@ sap.ui.define([
 					this.attachModel(oComponent.getModel());	// grab the component's default model.
 				}
 			} else {
-				this._sComponentId = "mil.navy.lib.ca.odataUtils.ODataErrorHandler__" + sModelId || "model";
+				this._sComponentId = "com.publix.ui5lib.ca.odataUtils.ODataErrorHandler__" + sModelId || "model";
 				if (oModel) {
 					this.attachModel(oModel);
 				}

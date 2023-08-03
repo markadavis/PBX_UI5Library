@@ -8,7 +8,7 @@ sap.ui.define([
 ], function (FilterBar, PersonalizableInfo, SmartVariantManagement, Filter, FilterOperator, Token) {
     "use strict";
 
-    var CustomFilterBar = FilterBar.extend("mil.navy.lib.ca.controls.VariantFilterBar", {
+    var CustomFilterBar = FilterBar.extend("com.publix.ui5lib.ca.controls.VariantFilterBar", {
         Filter: Filter,
         FilterOperator: FilterOperator,
     
@@ -103,14 +103,14 @@ sap.ui.define([
                     }
                     break;
 
-                case "mil.navy.lib.rp.controls.vendorRic.VendorRIC":
+                case "com.publix.ui5lib.rp.controls.vendorRic.VendorRIC":
                     let sSelectedRic = oControl.getSelectedKey();
                     if (sSelectedRic) {
                         oInfo.value1 = sSelectedRic;
                     }
                     break;
 
-                case "mil.navy.lib.rp.controls.vendorRic.MultiVendorRIC":
+                case "com.publix.ui5lib.rp.controls.vendorRic.MultiVendorRIC":
                     let aRics = oControl.getSelectedKeys();
                     if (aRics.length > 0) {
                         oInfo.value1 = aRics.length > 1 ? aRics : aRics[0];
@@ -235,8 +235,8 @@ sap.ui.define([
                     }
                     break;
 
-				case "mil.navy.lib.rp.controls.vendorRic.VendorRIC":
-				case "mil.navy.lib.rp.controls.vendorRic.MultiVendorRIC":
+				case "com.publix.ui5lib.rp.controls.vendorRic.VendorRIC":
+				case "com.publix.ui5lib.rp.controls.vendorRic.MultiVendorRIC":
 					let aRicFilters = [];
 					if (Array.isArray(oFilterItem.value1)) {
 						oFilterItem.value1.forEach((sRic) =>{
@@ -373,11 +373,11 @@ sap.ui.define([
                                 }
                                 break;
 
-                            case "mil.navy.lib.rp.controls.vendorRic.VendorRIC":
+                            case "com.publix.ui5lib.rp.controls.vendorRic.VendorRIC":
                                 oControl.setSelectedKey(oFilterValue ? oFilterValue.value1 : "");
                                 break;
 
-                            case "mil.navy.lib.rp.controls.vendorRic.MultiVendorRIC":
+                            case "com.publix.ui5lib.rp.controls.vendorRic.MultiVendorRIC":
                                 let aValues = []
                                 if (Array.isArray(oFilterValue.value1)) {
                                     aValues =  oFilterValue ? oFilterValue.value1 : [];

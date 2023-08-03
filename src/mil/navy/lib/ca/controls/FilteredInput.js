@@ -3,7 +3,7 @@ sap.ui.define([
 ], function(Input) {
 	"use strict";
 
-	var oInput = Input.extend("mil.navy.lib.ca.controls.FilteredInput", {
+	var oInput = Input.extend("com.publix.ui5lib.ca.controls.FilteredInput", {
 		renderer: function(oRM, oControl) { // static function
 			sap.m.InputRenderer.render(oRM, oControl);
 		}
