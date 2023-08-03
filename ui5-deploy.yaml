@@ -2,7 +2,7 @@
 
 specVersion: "2.4"
 metadata:
-  name: mil.navy.lib
+  name: com.company.ca.ui5lib
 type: library
 builder:
   resources:
@@ -16,10 +16,10 @@ builder:
         ignoreCertError: true
         target:
           destination: FD4
-          url: https://ndc2-313.erp.navy.mil:40401
+          url: https://xxx
           client: "100"
         app:
-          name: ZUI5_LIBRARY
-          description: US Navy ERP Custom UI5 Library
+          name: ZCA_UI5_LIBRARY
+          description: Custom UI5 Library
           package: ZUI5
-          transport: FD4K900680
+          transport: DX4K000000
