@@ -1,40 +1,23 @@
 {
-    "name": "mil.navy.lib",
-    "version": "0.0.1",
-    "private": true,
-    "sapuxLayer": "CUSTOMER_BASE",
-    "description": "US Navy ERP Custom UI5 Library",
-    "keywords": [
-        "ui5",
-        "openui5",
-        "sapui5"
-    ],
-    "scripts": {
-        "start": "fiori run --open \"test/flpSandbox.html?sap-client=100&sap-ui-xx-viewCache=false#app-tile\"",
-        "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandboxMockServer.html?sap-client=100&sap-ui-xx-viewCache=false#app-tile\"",
-        "start-noflp": "fiori run --open \"index.html?sap-client=100&sap-ui-xx-viewCache=false\"",
-        "start-variants-management": "fiori run --open \"preview.html?sap-client=100&sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
-        "build": "ui5 build -a --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
-        "deploy": "npm run build && fiori deploy --config ui5-deploy.yaml && rimraf archive.zip",
-        "deploy-config": "fiori add deploy-config",
-        "start-mock": "fiori run --open \"test/flpSandboxMockServer.html?sap-client=100&sap-ui-xx-viewCache=false#app-tile\"",
-        "undeploy": "fiori undeploy --config ui5-deploy.yaml",
-        "deploy-test": "npm run build && fiori deploy --config ui5-deploy.yaml --testMode true"
-    },
-    "devDependencies": {
-        "@sap/ux-ui5-tooling": "^1.6.3",
-        "@ui5/cli": "^2.14.10",
-        "@ui5/fs": "^2.0.6",
-        "@ui5/logger": "^2.0.1",
-        "rimraf": "3.0.2"
-    },
-    "ui5": {
-        "dependencies": [
-            "@sap/ux-ui5-tooling"
-        ]
-    },
-    "dependencies": {
-        "to": "^0.2.9",
-        "update": "^0.7.4"
-    }
+	"name": "com.publix.zui5library",
+	"version": "0.0.1",
+	"private": true,
+	"keywords": [
+		"ui5",
+		"openui5",
+		"sapui5"
+	],
+	"scripts": {
+		"build": "ui5 build -a --clean-dest --include-task=generateCachebusterInfo",
+		"deploy-config": "fiori add deploy-config"
+	},
+	"devDependencies": {
+        "@ui5/cli": "^3.0.0",
+        "@sap/ux-ui5-tooling": "1"
+},
+	"ui5": {
+		"dependencies": [
+			"@sap/ux-ui5-tooling"
+		]
+	}
 }
