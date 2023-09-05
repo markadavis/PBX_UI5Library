@@ -7,7 +7,7 @@ sap.ui.define([
 ], function(UI5Object, Device, ODataModel, ResourceBundle, JSONModel) {
 	"use strict";
 
-	return UI5Object.extend("com.publix.zUI5Library.pm.storeSelector.StoreSelector", {
+	return UI5Object.extend("com.publix.ui5library.pm.storeSelector.StoreSelector", {
 
 		/* =========================================================== */
 		/*  Lifecycle methods                                          */
@@ -19,7 +19,7 @@ sap.ui.define([
 		 * @param {} oComponent The (optional) component to assign the storage with (uses the app's ID).
 		 * @class
 		 * @public
-		 * @alias com.publix.zUI5Library.pm.storeSelector.StoreSelector
+		 * @alias com.publix.ui5library.pm.storeSelector.StoreSelector
 		 */
 		constructor: function(sPersonalizationId, oComponent) {
 			this._oSelectorReady = new Promise(function(fnResolve, fnReject) {
@@ -37,13 +37,16 @@ sap.ui.define([
 
 				// Bind the resource bundle.
 				this._oResourceModel = new ResourceBundle({
-					bundleName: "com.publix.zUI5Library.pm.storeSelector.StoreSelector"
+					bundleName: "com.publix.ui5library.pm.storeSelector.StoreSelector"
 				});
 				this._oResourceBundle = this._oResourceModel.getResourceBundle();
 
 				// Construct the Dialog.
-				this._oDialog = sap.ui.xmlfragment("com.publix.zUI5Library.pm.storeSelector.StoreSelector", this);
-				this._oDialog.addStyleClass(this.getContentDensityClass());
+				this._oDialog = sap.ui.xmlfragment("com.publix.ui5library.pm.storeSelector.StoreSelector", this);
+				let sDensityClass = this._getContentDensityClass();
+				if (sDensityClass) {
+					this._oDialog.addStyleClass(sDensityClass);
+				}
 
 				// Set the dialog's resource & default models.
 				this._oDialog.setModel(this._oResourceModel, "i18n");
@@ -92,6 +95,7 @@ sap.ui.define([
 			// Destroy the dialog if it was constructed.
 			if (this._oDialog) {
 				this._oDialog.destroy();
+				this._oDialog = null;
 			}
 			// call the base component's destroy function
 			UI5Object.prototype.destroy.apply(this, arguments);
@@ -207,27 +211,6 @@ sap.ui.define([
 		/* =========================================================== */
 
 		/**
-		 * This method can be called to determine whether the sapUiSizeCompact or sapUiSizeCozy
-		 * design mode class should be set, which influences the size appearance of some controls.
-		 * @public
-		 * @return {string} css class, either 'sapUiSizeCompact' or 'sapUiSizeCozy' - or an empty string if no css class should be set
-		 */
-		getContentDensityClass: function() {
-			if (this._sContentDensityClass === undefined) {
-				// check whether FLP has already set the content density class; do nothing in this case
-				if (jQuery(document.body).hasClass("sapUiSizeCozy") || jQuery(document.body).hasClass("sapUiSizeCompact")) {
-					this._sContentDensityClass = "";
-				} else if (!Device.support.touch) { // apply "compact" mode if touch is not supported
-					this._sContentDensityClass = "sapUiSizeCompact";
-				} else {
-					// "cozy" in case of touch support; default for most sap.m controls, but needed for desktop-first controls like sap.ui.table.Table
-					this._sContentDensityClass = "sapUiSizeCozy";
-				}
-			}
-			return this._sContentDensityClass;
-		},
-
-		/**
 		 * Open the Store Maintenance dialog.
 		 * @param {function} fnCallBack The function to call when the dialog is closed.
 		 * @public
@@ -275,6 +258,29 @@ sap.ui.define([
 		/* =========================================================== */
 		/*  Private methods                                            */
 		/* =========================================================== */
+
+		/**
+		 * This method can be called to determine whether the sapUiSizeCompact or sapUiSizeCozy
+		 * design mode class should be set, which influences the size appearance of some controls.
+		 * @private
+		 * @return {string} css class, either 'sapUiSizeCompact' or 'sapUiSizeCozy' - or an empty string if no css class should be set
+		 */
+		_getContentDensityClass: function() {
+			// "cozy" in case of touch support; default for most sap.m controls, but needed
+			// for desktop-first controls like sap.ui.table.Table.
+			let sClass = "sapUiSizeCozy";
+
+			// Check whether FLP has already set the content density class.
+			if (jQuery(document.body).hasClass("sapUiSizeCozy") || jQuery(document.body).hasClass("sapUiSizeCompact")) {
+				// Already added, so no need to add it again.
+				sClass = "";
+			} else if (!Device.support.touch) {
+				// Apply "compact" mode if touch is not supported.
+				sClass = "sapUiSizeCompact";
+			}
+
+			return sClass;
+		},
 
 		/**
 		 * Setup the Fiori Launchpad's Personalization API.
