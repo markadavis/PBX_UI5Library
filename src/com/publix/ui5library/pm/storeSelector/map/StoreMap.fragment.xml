@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:publixStoreMapper="com.publix.ui5library.pm.storeSelector.map" >
+
+    <Dialog id="idStoreMapper"
+		initialFocus="idCloseBtn"
+		contentWidth="100%"
+        contentHeight="100%"
+		title="{i18n>storeMapper_dialogTitle}" >
+
+        <content>
+            <publixStoreMapper:GoogleStoreMapper id="idStoreMap"
+                latitude="{/latitude}"
+                longitude="{/longitude}"
+                address="{/address}"
+                centerChanged=""
+                mapClicked="" />
+        </content>
+
+        <buttons>
+			<Button id="idCloseBtn"
+				type="Default"
+				text="{i18n>storeMapper_dialogBtnClose}"
+				press=".storeMapperControl.onStoreMapperClose" />
+        </buttons>
+ 
+    </Dialog>
+
+</core:FragmentDefinition>

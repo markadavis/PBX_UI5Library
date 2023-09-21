@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+	<name>com.publix.ui5library</name>
+	<vendor>Publix Supermarkets</vendor>
+	<version>${version}</version>
+	<copyright>${copyright}Publix Supermarkets</copyright>
+	<title>Publix UI5 Library</title>
+	<documentation>Publix UI5 Reuse Library</documentation>
+	<dependencies>
+		<dependency>
+			<libraryName>sap.ui.core</libraryName>
+		</dependency>
+	</dependencies>
+	<appData>
+	</appData>
+</library>

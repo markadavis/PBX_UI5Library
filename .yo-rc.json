@@ -1,0 +1,16 @@
+{
+  "generator-ui5-library": {
+    "libraryname": "ui5library",
+    "namespace": "com.publix",
+    "framework": "SAPUI5",
+    "frameworkVersion": "1.60.39",
+    "author": "P1850771",
+    "newdir": true,
+    "namespaceURI": "com/publix",
+    "librarynamespace": "com.publix.ui5library",
+    "librarynamespaceURI": "com/publix/ui5library",
+    "librarybasepath": "../../../",
+    "frameworklowercase": "sapui5",
+    "setupCompleted": true
+  }
+}

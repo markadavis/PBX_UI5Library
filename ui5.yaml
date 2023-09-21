@@ -1,4 +1,8 @@
 specVersion: "2.6"
 metadata:
-  name: com.publix.zUI5Library
+  name: com.publix.ui5library
 type: library
+builder:
+  customTasks:
+    - name: ui5-task-flatten-library
+      afterTask: generateResourcesJson

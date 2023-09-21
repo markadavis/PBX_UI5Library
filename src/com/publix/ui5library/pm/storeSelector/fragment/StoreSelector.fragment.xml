@@ -1,0 +1,215 @@
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="sap.m" >
+
+	<Dialog id="dialog"
+		busyIndicatorDelay="100"
+	 	title="Use Custom Header" >
+
+		<customHeader>
+			<Bar id="DialogHeaderBar">
+				<contentLeft>
+					<Title id="DialogHeaderTtl"
+						text="{i18n>Title}" />
+				</contentLeft>
+				<contentRight>
+					<Button id="NearbyBtn"
+						type="Transparent"
+						icon="sap-icon://map"
+						visible="{= ${/userCoordinates} ? true : false }"
+						tooltip="{= ${/ShowNearby} ? ${i18n>BtnNearbyHide} : ${i18n>BtnNearbyShow} }"
+						press=".onNearbyShowHide" />
+				</contentRight>
+			</Bar>
+		</customHeader>
+
+		<subHeader>
+			<Bar id="DialogSubHeaderBar">
+				<contentLeft></contentLeft>
+				<contentMiddle>
+					<FlexBox id="DialogSubHeaderBox"
+						alignItems="Start"
+						justifyContent="Center">
+						<items>
+							<Input id="DialogSubHeaderStoreInput"
+								type="Number"
+								placeholder="{i18n>AddStorePlaceholder}"
+								submit="onAdd" />
+							<Button id="DialogSubHeaderAddBtn"
+								tooltip="{i18n>AddStoreBtnTooltip}"
+								icon="sap-icon://add"
+								press="onAdd" />
+						</items>
+					</FlexBox>
+				</contentMiddle>
+				<contentRight></contentRight>
+			</Bar>
+		</subHeader>
+
+		<content>
+			<VBox id="_IDGenVBox1">
+				<List id="SelectedStoreList"
+					busyIndicatorDelay="100"
+					noDataText="{i18n>NoStoresApplied}"
+					mode="Delete"
+					delete="onDelete"
+					items="{ path: '/StoresAdded/' }">
+
+					<CustomListItem id="_IDGenCustomListItem1"
+						class="sapUiTinyMarginTop sapUiSmallMarginBegin"
+						type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+						press="onSelectionChange" >
+						<content>
+
+							<VBox id="_IDGenVBox2"> 
+								<HBox id="_IDGenHBox1"
+									alignItems="Start"
+									justifyContent="SpaceBetween"
+									alignContent="Stretch" >
+
+									<Text id="_IDGenText1"
+										text="{
+											path: 'Address/ShoppingCenterID',
+											formatter: '.capFirstLetter'
+										}" />
+									<Text id="_IDGenText2"
+										text="{= ${i18n>LabelStoreId} + ' ' + ${StoreId} }" />
+								</HBox>
+
+								<HBox id="_IDGenHBox2"
+									alignItems="Start"
+									justifyContent="SpaceBetween"
+									alignContent="Stretch"
+									wrap="Wrap" >
+
+									<Text id="_IDGenText3"
+										text="{
+											path: 'Address/StreetAddress',
+											formatter: '.capFirstLetter'
+										}, {
+											path: 'Address/City',
+											formatter: '.capFirstLetter'
+										}, {Address/State}" />
+								</HBox>
+							</VBox>
+						</content>
+					</CustomListItem>
+				</List>
+
+				<!-- blank line  -->
+				<html:br />
+
+				<Panel id="panelNearbyStores"
+					busyIndicatorDelay="100"
+					backgroundDesign="Solid"
+					expandable="false"
+					expanded="true"
+					visible="{/ShowNearby}" >
+
+					<headerToolbar>
+						<Toolbar id="NearbyStoresHeaderToolbar" >
+							<Text id="NearbyPanelTitleTxt"
+								text="{i18n>TitleStoresNearby}" />
+							<Input id="NearbyPanelRadius"
+								width="3rem"
+								type="Number"
+								value="{/NearbyRadius}"
+								change=".onNearbyRadiusChange"
+								submit=".onNearbyRadiusChange" />
+							<Text id="NearbyPanelUnit"
+								text="mi" />
+							<ToolbarSpacer id="_IDGenToolbarSpacer1" />
+							<Button id="NearbyPanelCloseBtn"
+								type="Transparent"
+								icon="sap-icon://decline"
+								tooltip="{i18n>btnCloseNearybyPanel}"
+								press=".onNearbyPanelClosePress"/>
+						</Toolbar>
+					</headerToolbar>
+
+					<content>
+						<List id="nearbyStores"
+							busyIndicatorDelay="100"
+							noDataText="{i18n>NoStoresNearby}"
+							mode="MultiSelect"
+							includeItemInSelection="true"
+							selectionChange=".onNearbySelectionChange"
+							items="{ path: '/StoresNearby/' }" >
+							<items>
+
+								<CustomListItem id="NearbyStoreItem"
+									type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}"
+									class="sapUiTinyMarginTop" >
+									<content>
+
+										<VBox id="_IDGenVBox3">
+											<HBox id="NearbyStoreItemRow1"
+												alignItems="Start"
+												justifyContent="SpaceBetween"
+												alignContent="Stretch" >
+
+												<Text id="NearbyStoreItemRow1Item1"
+													text="{Address/ShoppingCenterID}" />
+												<Text id="NearbyStoreItemRow1Item2"
+													class="publixListItemRight"
+													width="5rem"
+													text="{= ${i18n>LabelStoreId} + ' ' + ${StoreId} }" />
+
+											</HBox>
+
+											<HBox id="NearbyStoreItemRow2"
+												alignItems="Start"
+												justifyContent="SpaceBetween"
+												alignContent="Stretch" >
+
+												<Text id="NearbyStoreItemRow3Item1"
+													text="{
+														path: 'Address/StreetAddress',
+														formatter: '.capFirstLetter'
+													}, {
+														path: 'Address/City',
+														formatter: '.capFirstLetter'
+													}, {Address/State}" />
+												<Text id="NearbyStoreItemRow3Item2"
+													class="publixListItemRight"
+													width="5rem"
+													text="{
+														path: 'distance',
+														formatter: '.formatDistance'
+													}" />
+
+											</HBox>
+										</VBox>
+									</content>
+								</CustomListItem>
+							</items>
+						</List>
+					</content>
+				</Panel>
+			</VBox>
+
+			<MessageStrip id="idMessageStripPlacehoder"
+				visible="false"
+				showIcon="true"
+				type="{/Message/Type}"
+				text="{/Message/Text}"
+				showCloseButton="true"
+				close=".onMessageStripClose" />
+
+		</content>
+
+		<buttons>
+			<Button id="DialogFooterApplyBtn"
+				type="Accept"
+				enabled="{/HaveStores}"
+				text="{i18n>BtnApply}"
+				press="onApply" />
+			<Button id="DialogFooterCancelBtn"
+				type="Reject"
+				text="{i18n>BtnCancel}"
+				press="onCancel" />
+		</buttons>
+	</Dialog>
+
+</core:FragmentDefinition>
